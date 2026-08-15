@@ -1,19 +1,36 @@
-from playwright.sync_api import sync_playwright
+from src.models.bot_model import BotConfigBuilder
+from src.strategies.message_strategy import DirectMessageStrategy
+from src.controllers.bot_controller import BotController
+import os
+from dotenv import load_dotenv
 
-def run():
 
-    with sync_playwright() as p:
 
-        browser = p.chromium.launch(headless=False)  # Abre la ventana visualmente
+def main():
 
-        page = browser.new_page()
-        page.goto("https://playwright.dev")
+    load_dotenv() 
+    
+    # 1. Construimos la configuración usando el patrón BUILDER
+    mensaje_tarea = "Tarea finalizada.\nPatrones utilizados: Builder, Page Object Model, Strategy y mvc."
 
-        print("Título de la página:", page.title())
+    phone_number = os.getenv("PHONE_NUMBER")
 
-        input("Presiona Enter en la terminal para cerrar el navegador...")
+    if not phone_number:
+        raise ValueError("¡Falta configurar PHONE_NUMBER en el archivo .env!")
+    
+    config = (BotConfigBuilder()
+              .set_phone(phone_number)  
+              .set_message(mensaje_tarea)
+              .build())
 
-        browser.close()
+    # 2. Definimos el comportamiento usando el patrón STRATEGY
+    strategy = DirectMessageStrategy()
+
+    # 3. Inicializamos el Controlador (MVC) inyectando dependencias
+    bot = BotController(config, strategy)
+    
+    # Arrancamos la ejecución
+    bot.run()
 
 if __name__ == "__main__":
-    run()
+    main()
