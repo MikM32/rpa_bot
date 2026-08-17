@@ -2,7 +2,9 @@ import os
 
 from dotenv import load_dotenv
 
-from whatsapp_bot import WhatsAppBot
+from src.controllers.bot_controller import BotController
+from src.models.bot_model import BotConfigBuilder
+from src.strategies.message_strategy import DirectMessageStrategy
 
 
 def main():
@@ -16,8 +18,15 @@ def main():
 
     mensaje = "Tarea finalizada.\nPatrones utilizados: Builder, Page Object Model, Strategy."
 
-    bot = WhatsAppBot(telefono, mensaje)
-    bot.ejecutar()
+    config = (BotConfigBuilder()
+              .set_phone(telefono)
+              .set_message(mensaje)
+              .build())
+
+    strategy = DirectMessageStrategy()
+
+    bot = BotController(config, strategy)
+    bot.run()
 
 
 if __name__ == "__main__":
