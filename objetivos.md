@@ -1,49 +1,43 @@
-# TAREA — Bot de WhatsApp con Playwright
+# TAREA - Bot de WhatsApp con Playwright
 
 ## Objetivo
 
-Crear un bot que envíe un mensaje por WhatsApp Web indicando que la tarea fue finalizada y qué patrones de diseño se utilizaron.
+Crear un bot que envie un mensaje por WhatsApp Web indicando que la tarea fue finalizada.
 
 ## Requisitos
 
 ### 1. Mensaje a enviar
 
-El bot debe enviar un solo mensaje con este formato (o similar):
+El bot debe enviar un solo mensaje:
 
 ```
 Tarea finalizada.
-Patrones utilizados: Builder, Page Object Model, Strategy.
 ```
 
-### 2. Persistencia de sesión (IMPORTANTE)
+### 2. Persistencia de sesion (IMPORTANTE)
 
-La primera ejecución va a pedir escanear el QR. Las siguientes **no deben pedirlo**. Para eso hay que guardar y cargar el `storage_state` de Playwright:
+La primera ejecucion pide escanear el QR. Las siguientes no deben pedirlo. Para eso se guarda y carga la sesion de Playwright:
 
-- Si existe la sesión guardada → cargarla y saltar QR.
-- Si no existe → mostrar QR, escanear, y al cerrar guardar la sesión.
+- Si existe la sesion guardada, cargarla y saltar el QR.
+- Si no existe, mostrar el QR, escanear, y al cerrar guardar la sesion.
 
-### 3. Gestión del proyecto con PDM
+### 3. Gestion del proyecto con PDM
 
-El proyecto debe manejarse con PDM:
+El proyecto debe manejarse con PDM.
 
-```bash
-pdm init
-pdm add playwright
-```
+### 4. Ejecucion
 
-### 4. Ejecución
-
-El proyecto debe incluir un `.bat` que ejecute el bot sin cerrar la consola al finalizar.
+El proyecto debe incluir un .bat que ejecute el bot sin cerrar la consola al finalizar.
 
 ### 5. Entrega
 
-- Subir el proyecto a un **repositorio público en GitHub**.
+- Subir el proyecto a un repositorio publico en GitHub.
 - Compartir el link del repo.
 
-## Criterios de evaluación
+## Criterios de evaluacion
 
-- El bot envía el mensaje correctamente.
-- La sesión se persiste (no pide QR en la 2da ejecución).
+- El bot envia el mensaje correctamente.
+- La sesion se persiste (no pide QR en la segunda ejecucion).
 - El proyecto se gestiona con PDM.
-- El `.bat` funciona.
-- El repo está en GitHub y es accesible.
+- El .bat funciona.
+- El repo esta en GitHub y es accesible.

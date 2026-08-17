@@ -1,15 +1,12 @@
 [project]
-name = "practica_bot"
+name = "rpa_bot"
 version = "1"
-description = "Default template for PDM package"
+description = "Bot de WhatsApp con Playwright"
 authors = [
-    {name = "Benjamin Marroquin",email = "benjaminenma99@gmail.com"},
+    {name = "Miguel Matute", email = "miguelmatute2004@gmail.com"},
 ]
 dependencies = ["playwright>=1.62.0", "python-dotenv>=1.2.2"]
 requires-python = "==3.11.*"
-readme = "README.md"
-license = {text = "algo"}
-
 
 [tool.pdm]
 distribution = false
