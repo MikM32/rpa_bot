@@ -14,7 +14,7 @@ def main():
         print("Falta configurar PHONE_NUMBER en el archivo .env")
         return
 
-    mensaje = "Tarea finalizada."
+    mensaje = "Tarea finalizada.\nPatrones utilizados: Builder, Page Object Model, Strategy."
 
     bot = WhatsAppBot(telefono, mensaje)
     bot.ejecutar()

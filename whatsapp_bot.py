@@ -18,7 +18,7 @@ class WhatsAppBot:
             print("Verificando la sesion de WhatsApp...")
 
             try:
-                page.wait_for_selector("#pane-side", timeout=10000)
+                page.wait_for_selector("#pane-side", timeout=30000)
                 print("Sesion activa. Entrando al chat...")
             except Exception:
                 print("No hay sesion activa. Escanea el codigo QR...")

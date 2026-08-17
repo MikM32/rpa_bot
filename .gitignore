@@ -5,6 +5,7 @@
 .venv
 venv/
 __pypackages__/
+.pdm-python
 
 # cache de python
 __pycache__/
